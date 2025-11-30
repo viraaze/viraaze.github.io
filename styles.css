@@ -1,0 +1,135 @@
+/* Minimal overrides while using Bootstrap */
+
+:root {
+	--accent: hsl(31, 81%, 67%);
+}
+
+/* Global box-sizing and base styles */
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	margin: 0;
+	color: #111;
+}
+
+/* Navbar / branding tweaks */
+.navbar-brand {
+	font-weight: 700;
+	font-size: 30px;
+	color: #eee5d0;
+}
+
+/* Use CSS variable for navbar background so it can be themed centrally */
+.navbar {
+	background: var(--accent) !important;
+}
+
+/* Ensure navbar links are readable on the accent background */
+.navbar .nav-link,
+.navbar {
+	color: #29190b;
+}
+
+.navbar .nav-link:hover {
+	color: rgba(238, 235, 226, 0.9);
+}
+
+/* Site footer */
+.site-footer {
+	background:  var(--accent); /*#f8f9fa;*/
+	padding: 0.75rem 0;
+	margin-top: 1rem;
+}
+
+/* Post card */
+.post {
+	background: #f7f7f7;
+	padding: 0.75rem;
+	border-radius: 6px;
+}
+
+/* Logo link */
+.logo a {
+	color: inherit;
+	text-decoration: none;
+}
+
+/* Small utilities */
+.content section + section {
+	margin-top: 1rem;
+}
+
+/* Flex-based portfolio gallery */
+.flex-gallery {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: stretch;
+}
+.flex-card {
+	background: #ffffff;
+	padding: 0.75rem;
+	border-radius: 8px;
+	box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+	flex: 1 1 220px;
+	max-width: 320px;
+	display: flex;
+	flex-direction: column;
+}
+.flex-card img {
+	width: 100%;
+	height: auto;
+	border-radius: 6px;
+	object-fit: cover;
+	margin-bottom: 0.5rem;
+}
+.flex-card h4 { margin: 0.25rem 0; font-size: 1.1rem; }
+
+@media (max-width: 576px) {
+	.flex-gallery { gap: 0.5rem; }
+	.flex-card { padding: 0.5rem; }
+}
+
+/* Reusable, project-wide flex utilities (prefixed with fx- to avoid conflicts) */
+.fx { display: flex !important; }
+.fx-row { flex-direction: row; }
+.fx-col { flex-direction: column; }
+.fx-wrap { flex-wrap: wrap; }
+.fx-nowrap { flex-wrap: nowrap; }
+.fx-center { justify-content: center; align-items: center; }
+.fx-between { justify-content: space-between; align-items: center; }
+.fx-start { justify-content: flex-start; align-items: center; }
+.fx-end { justify-content: flex-end; align-items: center; }
+.fx-gap-sm { gap: 0.5rem; }
+.fx-gap-md { gap: 1rem; }
+.fx-gap-lg { gap: 1.5rem; }
+.fx-1 { flex: 1 1 0%; }
+.fx-2 { flex: 2 1 0%; }
+.fx-auto { flex: 0 0 auto; }
+.fx-center-col { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+
+/* Responsive helpers */
+@media (max-width: 768px) {
+  .fx-stack-sm { flex-direction: column !important; }
+}
+
+/* Small wrapper utility used in footer/header when needed */
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+
+/* Adoption gallery: unify image heights while preserving aspect with object-fit */
+.adoption-gallery figure { margin: 0; }
+.adoption-gallery img {
+		width: 100%;
+		height: 240px; /* unified visual height on wider screens */
+		object-fit: cover; /* crop to fill while preserving aspect ratio */
+		display: block;
+}
+
+@media (max-width: 576px) {
+	.adoption-gallery img { height: 160px; }
+}
+
